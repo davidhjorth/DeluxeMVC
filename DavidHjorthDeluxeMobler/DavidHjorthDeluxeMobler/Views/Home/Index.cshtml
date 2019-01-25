@@ -1,0 +1,132 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<p>Welcome @Model.UserData.Name!</p>
+
+<div class="chip">
+    David Hjorth<img src="~/Pictures/img_avatar.jpg" width="96" height="96" />
+
+</div>
+<h1>Products</h1>
+<br />
+
+<br /><br />
+<ul>
+
+    <ul>
+
+        <table>
+            <tr>
+
+                <th>Title</th>
+                <th>Examples left</th>
+                <th>Price</th>
+                <th>Material</th>
+                <th>Color</th>
+                <th>Information</th>
+
+            </tr>
+
+
+            @foreach (var furniture in Model.FurnitureList)
+            {
+                // Under är bilden och klicklänk på bilden till Details.cshtml
+                <tr>                         
+                    <td><a href="@Url.Action("Details","Product",new { id = furniture.Id })"><img class="product-img" src='~/Pictures/@(furniture.Title+".jpg")' /><br />@furniture.Title</a></td>
+                    <td>@furniture.Count</td>
+                    <td>@furniture.Price sek</td>
+                    <td>@furniture.Material</td>
+                    <td>@furniture.Color</td>
+
+
+
+                    @if (furniture is DavidHjorthDeluxeMobler.Models.Sofa)
+                    {
+                        <td>
+
+                            Length: @(((DavidHjorthDeluxeMobler.Models.Sofa)furniture).Length) /
+                            Corner: @(((DavidHjorthDeluxeMobler.Models.Sofa)furniture).Corner) /
+                            Bed sofa: @(((DavidHjorthDeluxeMobler.Models.Sofa)furniture).SofaBed)
+                            
+
+
+
+
+                        </td>
+                    }
+
+
+                    @if (furniture is DavidHjorthDeluxeMobler.Models.Table)
+                    {
+                        <td>
+                            Height: @(((DavidHjorthDeluxeMobler.Models.Table)furniture).Height)/
+                            Legs: @(((DavidHjorthDeluxeMobler.Models.Table)furniture).Legs)
+
+
+                        </td>
+                    }
+                    @if (furniture is DavidHjorthDeluxeMobler.Models.Chair)
+                    {
+                        <td>
+                            Chairlegs: @(((DavidHjorthDeluxeMobler.Models.Chair)furniture).Legs)
+
+
+                        </td>
+                    }
+                    <td>
+                        @if (furniture.Count > 0)
+                        {
+                            <a href="~/Home/Buy/@furniture.Id">Put in shopping basket</a>
+                        }
+
+
+
+                    </td>
+                    <td>
+                        @if (furniture.Count < furniture.InitialCount)
+                        {
+                            <a href="~/Home/Return/@furniture.Id" class="remove">Remove item</a>
+                        }
+                    </td>
+
+
+
+
+
+                </tr>
+            }
+
+        </table>
+        </ul>
+ 
+        <p>Shopping cart</p>
+           <!--Länkar knappen vid shopping cart till nästa sida där summan visas-->
+        <a href="@Url.Action("Index", "Cart")" class="button" style="vertical-align:middle">Check out</a> 
+    
+        <div class="Shoppingcart">
+
+            @if (Model.UserData.CartList != null)
+            {
+                foreach (var cart in Model.UserData.CartList)
+                {
+                    foreach (var furniture in Model.FurnitureList)
+                    {
+                        if (cart.Id == furniture.Id)
+                        {
+                            <ul>
+                                <p>
+                                    @furniture.Title:
+                                    @furniture.Price sek
+                                </p>
+                            </ul>
+                        }
+                    }
+                }
+            }
+
+
+
+        </div>

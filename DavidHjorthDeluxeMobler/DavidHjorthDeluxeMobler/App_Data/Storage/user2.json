@@ -1,0 +1,44 @@
+{
+  "$type": "DavidHjorthDeluxeMobler.Models.UserData, DavidHjorthDeluxeMobler",
+  "Id": 2,
+  "Name": "David Hjorth",
+  "Email": "david.hjorth@hotmail.com",
+  "Password": "lol",
+  "CartList": [
+    {
+      "$type": "DavidHjorthDeluxeMobler.Models.UserData+Cart, DavidHjorthDeluxeMobler",
+      "Id": 3,
+      "ReturnDate": "2019-02-22T09:13:18.8707199+01:00"
+    },
+    {
+      "$type": "DavidHjorthDeluxeMobler.Models.UserData+Cart, DavidHjorthDeluxeMobler",
+      "Id": 3,
+      "ReturnDate": "2019-02-22T09:13:20.7666836+01:00"
+    },
+    {
+      "$type": "DavidHjorthDeluxeMobler.Models.UserData+Cart, DavidHjorthDeluxeMobler",
+      "Id": 3,
+      "ReturnDate": "2019-02-22T09:13:23.3782934+01:00"
+    },
+    {
+      "$type": "DavidHjorthDeluxeMobler.Models.UserData+Cart, DavidHjorthDeluxeMobler",
+      "Id": 3,
+      "ReturnDate": "2019-02-22T09:13:26.8066008+01:00"
+    },
+    {
+      "$type": "DavidHjorthDeluxeMobler.Models.UserData+Cart, DavidHjorthDeluxeMobler",
+      "Id": 4,
+      "ReturnDate": "2019-02-22T09:21:00.3644269+01:00"
+    },
+    {
+      "$type": "DavidHjorthDeluxeMobler.Models.UserData+Cart, DavidHjorthDeluxeMobler",
+      "Id": 7,
+      "ReturnDate": "2019-02-22T09:21:01.5547318+01:00"
+    },
+    {
+      "$type": "DavidHjorthDeluxeMobler.Models.UserData+Cart, DavidHjorthDeluxeMobler",
+      "Id": 7,
+      "ReturnDate": "2019-02-22T09:21:03.4595322+01:00"
+    }
+  ]
+}

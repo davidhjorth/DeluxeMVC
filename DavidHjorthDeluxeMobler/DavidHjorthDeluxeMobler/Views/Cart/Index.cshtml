@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>Payment information</h2>
+
+@if (Model.UserData.CartList != null)
+{//räknar ut summan av alla items i varukorgen
+    var sum = 0;
+    foreach (var cart in Model.UserData.CartList)
+    {
+        foreach (var furniture in Model.FurnitureList)
+        {
+            if (cart.Id == furniture.Id)
+            {
+                sum += furniture.Price;
+                <ul>
+                    <p>
+                        @furniture.Title:
+                        @furniture.Price sek
+                    </p>
+                </ul>
+            }
+        }
+    }
+    <p>The sum of all items in the shopping cart will be @(sum) sek.</p>
+}
+

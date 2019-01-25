@@ -1,0 +1,36 @@
+﻿@model DavidHjorthDeluxeMobler.Models.Furniture
+@using DavidHjorthDeluxeMobler.Models;
+@{
+    ViewBag.Title = "Info om " + Model.Title;
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<h2>@Model.Title</h2>
+<h4>@Model.Price kr</h4>
+
+
+@if (Model is Sofa)
+{
+    var sofa = (Sofa)Model;
+// ?" yes"  tar bort true / false och lägger till yes / no istället
+    <p>Bed sofa:  @(sofa.SofaBed ? "Yes" : "No")  </p>
+    <p>Corner: @(sofa.Corner ? "Yes" : "No")</p>
+    <p>Length: @sofa.Length meter</p>
+}
+else if (Model is Table)
+{
+    var table = (Table)Model;
+
+    <p>Height: @table.Height meter</p>
+    <p>Legs: @table.Legs</p>
+}
+
+else if (Model is Chair)
+{
+    var chair = (Chair)Model;
+
+    <p>Chairlegs:  @chair.Legs</p>
+
+}
+<!--Tillbakaknapp-->
+@Html.ActionLink("Back", "Index", "Home")
